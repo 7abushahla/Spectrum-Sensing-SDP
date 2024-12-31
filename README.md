@@ -112,7 +112,6 @@ This repository provides all resources necessary to replicate or build upon the 
   - Project poster
   - Presentation slides
 - **/hardware**: Block diagrams and detailed descriptions of the experimental setup.
-- **/data**: Sample data and experimental results.
 - **LICENSE**: Licensing information for the repository.
 
 2. Navigate to the `docs` folder to review the project report and understand the implementation details.
