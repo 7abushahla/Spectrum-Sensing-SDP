@@ -27,7 +27,6 @@ This folder contains Python code for the central node running on a Raspberry Pi:
 
 <!-- ### `simulation/`
 This folder contains a notebook for simulating spectrum sensing using the **SDR dataset** from the DeepSense paper:
-- **`bin2hdf5 AND preprocess.ipynb`**: Converts raw SDR dataset binary files into HDF5 format for efficient processing, AND prepares the SDR dataset for training and evaluation.
 
 - **`sdr_simulation.ipynb`**: Simulates SDR-based spectrum sensing by training and evaluating a model using the SDR dataset for inference. -->
 
@@ -45,6 +44,7 @@ This folder contains information and data for both the collected and SDR dataset
 - **`sdr_dataset/`**:
   - Example input/output files for the SDR dataset simulation.
   - `data_description.txt`: Notes on the DeepSense SDR dataset.
+  - **`bin2hdf5 AND preprocess.ipynb`**: Converts raw SDR dataset binary files into HDF5 format for efficient processing, AND prepares the SDR dataset for training and evaluation.
   - **`model_training_sdr.ipynb`**: Notebook for training the model using the **SDR dataset**.
     
 ---
