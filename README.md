@@ -69,7 +69,12 @@ This block diagram illustrates the components and operational scenario of the sy
 **Operational Example**:
   1. SU-1 requests transmission, and the request is placed first in a FIFO queue.
   2. The CNN-based SS model analyzes data, outputting [1,0], indicating 433 MHz is occupied while 500 MHz is free.
-  3. The central node allocates the free 500 MHz band to SU-1, effectively managing the spectrum resources.
+  3. The central node allocates the free 500 MHz band to SU-1, effectively managing the spectrum resources.
+
+**Experimental Setup**:
+
+![Experimental Setup](hardware/experimental_setup.png)
+
 ---
 
 ## Software Implementation
