@@ -18,23 +18,26 @@ This folder contains Arduino `.ino` files for Primary Users (PU) and Secondary U
 ### `raspberry_pi/`
 This folder contains Python code for the central node running on a Raspberry Pi:
 - **`central_node.py`**: Implements two parallel tasks:
-  1. **Spectrum Monitoring**: Uses RTL-SDR and a quantized TensorFlow Lite deep learning model to infer spectrum occupancy.
+  1. **Spectrum Monitoring**: Uses RTL-SDR and a quantized TensorFlow Lite deep learning model to infer spectrum occupancy. The model (`model.tflite`) was trained on the **collected dataset**.
   2. **Control Channel Management**: Handles SU communication, allocates channels dynamically, and queues requests based on a First-Come-First-Served (FCFS) protocol.
 - **`model.tflite`**: Pre-trained and quantized deep learning model for detecting spectrum holes.
-<!-- - **`data_preprocessing.ipynb`**: Notebook for processing the collected I/Q samples into a labeled dataset. -->
-
-### `simulation/`
-This folder contains resources for simulating spectrum sensing using the SDR dataset:
-- **`sdr_simulation.ipynb`**: Simulates SDR-based spectrum sensing using the DeepSense dataset.
 - **`figures/`**:
   - `gnuradio_block_diag.png`: Diagram of the GNU Radio block used for data collection.
-  - `spectrum_plots.png`: Visual representation of spectrum usage by PUs and SUs.
+  - `spectrum_plots.png`: Visual representation of spectrum usage by PUs and SUs during data collection.
+
+### `simulation/`
+This folder contains a notebook for simulating spectrum sensing using the **SDR dataset** from the DeepSense paper:
+- **`sdr_simulation.ipynb`**: Simulates SDR-based spectrum sensing by training and evaluating a model using the SDR dataset for inference.
 
 ### `datasets/`
-This folder contains the labeled dataset and related files:
-- **`iq_samples.npz`**: Compressed dataset with labeled I/Q samples (300,000 samples).
-- **`data_description.txt`**: Detailed description of the data collection process, including GNU Radio configurations and labeling methodology.
-
+This folder contains information and data for both the collected and SDR datasets:
+- **`collected_dataset/`**:
+  - `iq_samples.npz`: Compressed dataset of I/Q samples captured during real-world experiments with labeled occupancy states.
+  - `data_description.txt`: Detailed description of data collection using GNU Radio.
+- **`sdr_dataset/`**:
+  - Example input/output files for the SDR dataset simulation.
+  - `data_description.txt`: Notes on the DeepSense SDR dataset.
+    
 ---
 
 ## System Overview
@@ -46,18 +49,22 @@ The system operates under FDMA, with dedicated frequency bands assigned as follo
 - **Control Channel**: 440 MHz (used by the CU for communication with SUs).
 
 ### Communication Protocol
-A basic communication protocol inspired by TCP ensures reliable message delivery:
-- **PUs**: Operate on dedicated frequencies and transmit to the CU using a predefined format.
-- **SUs**: Send transmission requests to the CU via the control channel. The CU queues requests and allocates frequencies dynamically.
-- **Acknowledgment (ACK)**: The CU acknowledges SU requests before they begin transmission.
+A basic communication protocol inspired by TCP ensures reliable message delivery. Each data frame is structured as follows:
 
-Example communication (Arduino):
+| Field       | Description                                  |
+|-------------|----------------------------------------------|
+| `source`    | Address of the sender (e.g., PU1: `2`, SU2: `5`) |
+| `message`   | Type of message (e.g., `PU`, `start`, `end`) |
+| `destination` | Address of the receiver (e.g., CU: `1`)     |
+
+Example Arduino transmission:
 ```cpp
 String dataToSend = String(PU_Address);
 dataToSend += String(",PU,");
 dataToSend += String(nodeAddress);
 ```
-Example response (Python, CU):
+
+Example Python response at the CU:
 ```python
 if destination == ownAddress:
     print("Received:", request)
@@ -66,18 +73,19 @@ if destination == ownAddress:
 ```
 
 ### Spectrum Monitoring
-The CU continuously monitors the spectrum using an RTL-SDR antenna and a deep learning model. The model identifies spectrum holes by analyzing real-time RF data.
+The CU continuously monitors the spectrum using an RTL-SDR antenna and a deep learning model trained on the **collected dataset**. The model identifies spectrum holes by analyzing real-time RF data.
 
 ---
 
-## Dataset
-The dataset reflects simple real-world scenarios with two PUs and two SUs. It was collected using GNU Radio with RTL-SDR antennas tuned to 433 MHz and 500 MHz, covering the following conditions:
-1. Both frequencies unoccupied.
-2. Only 433 MHz occupied.
-3. Only 500 MHz occupied.
-4. Both frequencies occupied.
+## Dataset Overview
 
-The collected I/Q samples were labeled and compressed into `.npz` format for training the TensorFlow Lite model.
+### Collected Dataset
+- **Generated using GNU Radio** with real-world experiments involving PUs and SUs.
+- Includes 300,000 labeled I/Q samples representing spectrum occupancy states.
+
+### SDR Dataset
+- Obtained from the **[DeepSense paper](https://github.com/wineslab/deepsense-spectrum-sensing-datasets/tree/main)**.
+- Used in the simulation notebook (`sdr_simulation.ipynb`) for model training and testing.
 
 ---
 
@@ -88,3 +96,5 @@ The collected I/Q samples were labeled and compressed into `.npz` format for tra
   - `rtlsdr` for spectrum monitoring.
   - `adafruit_rfm9x` for LoRa transceiver communication.
   - TensorFlow Lite for deploying the quantized DL model.
+
+---
