@@ -34,7 +34,7 @@ This folder contains a notebook for simulating spectrum sensing using the **SDR 
 This folder contains information and data for both the collected and SDR datasets:
 - **`collected_dataset/`**:
   - `iq_samples.npz`: Compressed dataset of I/Q samples captured during real-world experiments with labeled occupancy states.
-  - `data_description.txt`: Detailed description of data collection using GNU Radio.
+  - `data_description.md`: Detailed description of data collection using GNU Radio.
   - `gnuradio_block_diag.png`: Diagram of the GNU Radio block used for data collection.
   - **`model_training_collected.ipynb`**: Notebook for training the model using the **collected dataset**.
 
@@ -43,7 +43,7 @@ This folder contains information and data for both the collected and SDR dataset
     - Apply float16 Post-Training Quantization (PTQ) on the model and test it.
 - **`sdr_dataset/`**:
   - Example input/output files for the SDR dataset simulation.
-  - `data_description.txt`: Notes on the DeepSense SDR dataset.
+  - `data_description.md`: Notes on the DeepSense SDR dataset.
   - **`bin2hdf5 AND preprocess.ipynb`**: Converts raw SDR dataset binary files into HDF5 format for efficient processing, AND prepares the SDR dataset for training and evaluation.
   - **`model_training_sdr.ipynb`**: Notebook for training the model using the **SDR dataset**.
     
