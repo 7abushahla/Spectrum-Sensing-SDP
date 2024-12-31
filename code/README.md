@@ -21,9 +21,9 @@ This folder contains Python code for the central node running on a Raspberry Pi:
   1. **Spectrum Monitoring**: Uses RTL-SDR and a quantized TensorFlow Lite deep learning model to infer spectrum occupancy. The model (`model.tflite`) was trained on the **collected dataset**.
   2. **Control Channel Management**: Handles SU communication, allocates channels dynamically, and queues requests based on a First-Come-First-Served (FCFS) protocol.
 - **`model.tflite`**: Pre-trained and quantized deep learning model for detecting spectrum holes.
-- **`figures/`**:
+<!-- - **`figures/`**:
   - `gnuradio_block_diag.png`: Diagram of the GNU Radio block used for data collection.
-  - `spectrum_plots.png`: Visual representation of spectrum usage by PUs and SUs during data collection.
+  - `spectrum_plots.png`: Visual representation of spectrum usage by PUs and SUs during data collection. -->
 
 ### `simulation/`
 This folder contains a notebook for simulating spectrum sensing using the **SDR dataset** from the DeepSense paper:
@@ -34,6 +34,8 @@ This folder contains information and data for both the collected and SDR dataset
 - **`collected_dataset/`**:
   - `iq_samples.npz`: Compressed dataset of I/Q samples captured during real-world experiments with labeled occupancy states.
   - `data_description.txt`: Detailed description of data collection using GNU Radio.
+  - `gnuradio_block_diag.png`: Diagram of the GNU Radio block used for data collection.
+
 - **`sdr_dataset/`**:
   - Example input/output files for the SDR dataset simulation.
   - `data_description.txt`: Notes on the DeepSense SDR dataset.
