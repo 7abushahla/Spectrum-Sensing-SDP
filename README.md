@@ -57,7 +57,7 @@ The hardware implementation provides a practical demonstration of the project's 
 - PU and SU nodes simulate wireless communication using LoRa transceivers.
 - Sensors (DHT-11 and MQ-135) provide auxiliary data for experimental extensions.
 
-### Block Diagram
+#### Block Diagram
 
 ![Block Diagram](hardware/block_diagram.png)
 
