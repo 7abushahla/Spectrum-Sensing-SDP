@@ -14,6 +14,10 @@ The dataset was collected to reflect simple real-world scenarios with two Primar
 3. **Arduino Devices**: Two devices programmed to act as PUs transmitting messages at the specified frequencies.
 
 ### Configuration
+
+![gnuradio_block_diag](gnuradio_block_diag.png)
+
+
 - **Sampling Rate**: Set to `2.4×10^6` samples per second for both I and Q channels, resulting in a total RTL-SDR bandwidth of `8 MHz`.
 - **Gain Settings**:
   - RF Gain: `1×10^3 dB`
