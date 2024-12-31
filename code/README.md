@@ -27,6 +27,8 @@ This folder contains Python code for the central node running on a Raspberry Pi:
 
 ### `simulation/`
 This folder contains a notebook for simulating spectrum sensing using the **SDR dataset** from the DeepSense paper:
+- **`bin2hdf5 AND preprocess.ipynb`**: Converts raw SDR dataset binary files into HDF5 format for efficient processing, AND prepares the SDR dataset for training and evaluation.
+
 - **`sdr_simulation.ipynb`**: Simulates SDR-based spectrum sensing by training and evaluating a model using the SDR dataset for inference.
 
 ### `datasets/`
@@ -35,13 +37,15 @@ This folder contains information and data for both the collected and SDR dataset
   - `iq_samples.npz`: Compressed dataset of I/Q samples captured during real-world experiments with labeled occupancy states.
   - `data_description.txt`: Detailed description of data collection using GNU Radio.
   - `gnuradio_block_diag.png`: Diagram of the GNU Radio block used for data collection.
-  - **`dataset_testing.ipynb`**: A notebook to load and test the collected dataset. It includes steps to:
-    - Load `x1.npz` and `y1.npz` files for the dataset.
-    - Load the pre-trained model `2case.h5`.
+  - **`model_training_collected.ipynb`**: Notebook for training the model using the **collected dataset**.
+
+  - **`model_testing_quantization.ipynb`**: A notebook to load and test the collected dataset. It includes steps to:
+    - Load the pre-trained model.
     - Apply float16 Post-Training Quantization (PTQ) on the model and test it.
 - **`sdr_dataset/`**:
   - Example input/output files for the SDR dataset simulation.
   - `data_description.txt`: Notes on the DeepSense SDR dataset.
+  - **`model_training_sdr.ipynb`**: Notebook for training the model using the **SDR dataset**.
     
 ---
 
