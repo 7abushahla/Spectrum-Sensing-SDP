@@ -59,7 +59,7 @@ The hardware implementation provides a practical demonstration of the project's 
 
 ### Block Diagram
 
-*(Include a block diagram or hardware setup image here)*
+![Block Diagram](hardware/block_diagram.png)
 
 ---
 

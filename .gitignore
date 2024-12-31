@@ -1,0 +1,23 @@
+# macOS system files
+.DS_Store
+
+# Arduino build files
+/build/
+*.elf
+*.hex
+*.bin
+*.map
+*.sym
+
+# Temporary files
+*.tmp
+*.temp
+
+# Libraries (if you manage them separately)
+/libraries/
+
+# Other IDE-specific files (optional)
+.vscode/
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
