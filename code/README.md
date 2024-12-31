@@ -84,7 +84,7 @@ The CU continuously monitors the spectrum using an RTL-SDR antenna and a deep le
 - Includes 300,000 labeled I/Q samples representing spectrum occupancy states.
 
 ### SDR Dataset
-- Obtained from the **DeepSense paper**.
+- Obtained from the **[DeepSense paper](https://github.com/wineslab/deepsense-spectrum-sensing-datasets/tree/main)**.
 - Used in the simulation notebook (`sdr_simulation.ipynb`) for model training and testing.
 
 ---
