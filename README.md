@@ -79,13 +79,13 @@ This block diagram illustrates the components and operational scenario of the sy
 
 ## Software Implementation
 
-### Tools Used
+<!-- ### Tools Used
 
 - **GNU Radio**: For signal processing and spectrum analysis.
 - **Python**: For algorithm development and testing.
 - **Arduino IDE**: For programming microcontrollers.
 
-### Code Structure
+### Code Structure -->
 
 The repository includes:
 
